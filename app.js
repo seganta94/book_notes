@@ -30,8 +30,7 @@ db.query(`
   FROM
     books
   INNER JOIN
-    notes ON books.book_id = notes.book_id
-`, (err, res) => {
+    notes ON books.book_id = notes.book_id`, (err, res) => {
   if (err) {
     console.error("Error executing query", err.stack);
   } else {
