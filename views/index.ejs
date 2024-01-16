@@ -3,22 +3,43 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   <title>Book List</title>
+  <style>
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-color: rgb(174, 174, 174);
+    }
+    .book-list {
+      list-style: none;
+      padding: 0;
+      text-align: center;
+    }
+    .book-item {
+      margin: 20px 0;
+    }
+  </style>
 </head>
-<body>
-  <h1>Eduardo Segantine</h1>
-  <h2>Books I've Read</h2>
-  <ul>
+<body class="container">
+  <h1 class="text-center">Eduardo Segantine</h1>
+  <h2 class="text-center">Books I've Read</h2>
+  <p class="text-center">
+    Concise yet comprehensive summaries for each book, accompanied by detailed notes. Utilize the ISBN number to locate these books in your local library or any other preferred source. This page will be regularly updated as I delve into more reads, so consider bookmarking it for future reference.
+  </p>
+  <ul class="book-list">
     <% books.forEach(book => { %>
-      <li>
+      <li class="book-item">
         <% if (book.coverUrl) { %>
-          <img src="<%= book.coverUrl %>" alt="Book Cover" style="max-width: 100px;">
+          <img src="<%= book.coverUrl %>" alt="Book Cover" class="img-fluid mb-2">
         <% } %>
-        <strong><%= book.title %></strong> by <%= book.author %> (ISBN: <%= book.isbn %>)
-        <br>
-        Rating: <%= book.rating %>
-        <br>
-        About: <%= book.content %>
+        <h3><%= book.title %></h3>
+        <p class="lead">by <%= book.author %> (ISBN: <%= book.isbn %>)</p>
+        <p class="lead">Rating: <%= book.rating %>/10</p>
+        <p><strong>About:</strong> <%= book.content %></p>
       </li>
     <% }); %>
   </ul>
