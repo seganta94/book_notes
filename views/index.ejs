@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book List</title>
+</head>
+<body>
+  <h1>Eduardo Segantine</h1>
+  <h2>Books I've Read</h2>
+  <ul>
+    <% books.forEach(book => { %>
+      <li>
+        <% if (book.coverUrl) { %>
+          <img src="<%= book.coverUrl %>" alt="Book Cover" style="max-width: 100px;">
+        <% } %>
+        <strong><%= book.title %></strong> by <%= book.author %> (ISBN: <%= book.isbn %>)
+        <br>
+        Rating: <%= book.rating %>
+        <br>
+        About: <%= book.content %>
+      </li>
+    <% }); %>
+  </ul>
+</body>
+</html>
